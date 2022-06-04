@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TAREA-JPA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.1.0/css/all.css} "/>
+        <style>
+            .red{
+                color: red;
+            }
+            .yelow{
+                color:#ffcc00;
+            }
+        </style>
+    </head>
+    <body style="background-color: lightgoldenrodyellow">
+        <div style="background-color: lightgoldenrodyellow" class="container" >
+            <h3 id="tittl">LISTA DE EMPLEADO</h3>
+            <hr>
+            <button class="btn btn-info btn-lg btn-block" style="margin-bottom: 20px; " 
+                    data-toggle="modal" data-target="#modalGuardar" data-whatever="@mdo">
+                    AÑADIR EMPLEADO</button>
+            <div class="dark">
+                <div class="col">
+                    <table class="table" id="tablita">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDOS</th>
+                                <th scope="col">DNI</th>
+                                <th scope="col" colspan="2">ACCIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Guardar Post -->
+        <div class="modal fade" id="modalGuardar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Empleado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="nombres" placeholder="Ingrese nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Apellido:</label>
+                                <input class="form-control" id="apellidos" placeholder="Ingrese Apellido">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Dni:</label>
+                                <input class="form-control" id="dni" placeholder="Ingrese #DNI">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" id="guardar">Registrar Empleado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Modificar Post -->
+        <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="btn btn-success">Modificar Empleado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="editar_nombres" placeholder="Nuevo Nombre">
+                                <input type="hidden" class="form-control" id="idempleado" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Apellidos:</label>
+                                <input class="form-control" id="editar_apellidos">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Dni:</label>
+                                <input class="form-control" id="editar_dni">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-success" id="modificar">Modificar Empleado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+        <script th:src="@{/js/script.js}"></script>
+    </body>
+</html>
